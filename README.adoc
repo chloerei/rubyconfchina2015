@@ -1,0 +1,15 @@
+= 写作即编程
+
+RubyConf China 2015 话题演示文稿。
+
+== 构建
+
+[source,console]
+----
+$ git clone https://github.com/chloerei/rubyconfchina2015.git
+$ cd rubyconfchina2015
+$ git submodule update
+$ bundle
+$ rake
+$ open build/index.html # or open with your browser
+----

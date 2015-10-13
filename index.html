@@ -1,0 +1,449 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="author" content="黄增光（@chloerei） &lt;chloerei@gmail.com&gt;"><title>写作即编程</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="reveal.js/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme"><link href="reveal.js/lib/css/zenburn.css" rel="stylesheet"><script type="text/javascript">document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section><h1>写作即编程</h1><p><small>黄增光（@chloerei） &lt;chloerei@gmail.com&gt;</small></p></section><section><section><h2>关于我</h2><div class="paragraph"><p>Web 开发者</p></div></section><section><div class="imageblock" style=""><div class="content"><img src="images/ruby-china.png" alt="ruby china" width="300"></div></div>
+<div class="paragraph"><p><a href="https://ruby-china.org/rei" class="bare">https://ruby-china.org/rei</a></p></div></section><section><div class="imageblock" style=""><div class="content"><img src="images/selfstore-logo.png" alt="selfstore logo" width="300"></div></div>
+<div class="paragraph"><p><a href="https://selfstore.io" class="bare">https://selfstore.io</a></p></div></section></section>
+<section><section><h2>写作与我相关吗？</h2></section><section><h2>沟通</h2><div class="quoteblock"><blockquote><div class="paragraph"><p>如果你人为地将问题搞得难以阅读，它多半会被忽略，人们更愿读易懂的问题。</p></div></blockquote><div class="attribution"><cite>How To Ask Questions The Smart Way</cite><br>&#8212; Eric S. Raymond</div></div></section><section><h2>分享</h2><div class="quoteblock"><blockquote><div class="paragraph"><p>杰出的程序员跟勉强过得去的程序员之间的差别，不在于它们掌握了多少种编程语言……真正的关键是，他们能不能把他们的想法表达清楚。</p></div></blockquote><div class="attribution">&#8212; Joel Spolsky</div></div></section><section><h2>产品文档</h2><div class="ulist"><ul><li><p>发布（HTML/PDF）</p></li><li><p>多人协作</p></li><li><p>版本管理</p></li></ul></div></section></section>
+<section><section><h2>Markdown</h2></section><section><h2>支持 Markdown 的网站</h2><div class="ulist"><ul><li><p>Stack Overflow</p></li><li><p>GitHub</p></li><li><p>Ruby China</p></li><li><p>&#8230;&#8203;</p></li></ul></div></section><section><div class="listingblock"><div class="title">example.md</div><div class="content"><pre class="highlight"><code class="markdown language-markdown"># A First Level Header
+
+## A Second Level Header
+
+Now is the time for all good men to come to
+the aid of their country. This is just a
+regular paragraph.
+
+The quick brown fox jumped over the lazy
+dog's back.
+
+### Header 3
+
+&gt; This is a blockquote.
+&gt;
+&gt; This is the second paragraph in the blockquote.
+&gt;
+&gt; ## This is an H2 in a blockquote</code></pre></div></div></section><section><div class="listingblock"><div class="content"><pre class="highlight"><code class="console language-console">$ gem install redcarpet
+$ redcarpet example.md &gt; example.html</code></pre></div></div></section><section><div class="listingblock"><div class="title">example.html</div><div class="content"><pre class="highlight"><code class="html language-html">&lt;h1&gt;First Level Header&lt;/h1&gt;
+
+&lt;h2&gt;A Second Level Header&lt;/h2&gt;
+
+&lt;p&gt;Now is the time for all good men to come to
+the aid of their country. This is just a
+regular paragraph.&lt;/p&gt;
+
+&lt;p&gt;The quick brown fox jumped over the lazy
+dog&amp;#39;s back.&lt;/p&gt;
+
+&lt;h3&gt;Header 3&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;This is a blockquote.&lt;/p&gt;
+
+&lt;p&gt;This is the second paragraph in the blockquote.&lt;/p&gt;
+
+&lt;h2&gt;This is an H2 in a blockquote&lt;/h2&gt;
+&lt;/blockquote&gt;</code></pre></div></div></section><section><div class="listingblock"><div class="content"><pre class="highlight"><code class="ruby language-ruby">require 'redcarpet'
+
+# Initializes a Markdown parser
+markdown = Redcarpet::Markdown.new(renderer, extensions = {})
+
+markdown.render("This is *bongos*, indeed.")
+# =&gt; "&lt;p&gt;This is &lt;em&gt;bongos&lt;/em&gt;, indeed.&lt;/p&gt;"</code></pre></div></div></section><section><h2>Atom</h2><div class="imageblock" style=""><div class="content"><img src="images/atom-markdown.png" alt="atom markdown"></div></div></section></section>
+<section><section><h2>Markdown 语法</h2></section><section><h2>标题</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="markdown language-markdown"># 一级标题
+
+## 二级标题
+
+### 三级标题</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="html language-html">&lt;h1&gt;一级标题&lt;/h1&gt;
+
+&lt;h2&gt;二级标题&lt;/h2&gt;
+
+&lt;h3&gt;三级标题&lt;/h3&gt;</code></pre></div></div></section><section><h2>精通 H5</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="markdown language-markdown">##### 应用
+
+##### 游戏
+
+##### 页面</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="html language-html">&lt;h5&gt;应用&lt;/h5&gt;
+
+&lt;h5&gt;游戏&lt;/h5&gt;
+
+&lt;h5&gt;页面&lt;/h5&gt;</code></pre></div></div></section><section><div class="admonitionblock tip"><table><tr><td class="icon"><div class="title">Tip</div></td><td class="content">标题不等于大号加粗</td></tr></table></div></section><section><div class="admonitionblock tip"><table><tr><td class="icon"><div class="title">Tip</div></td><td class="content">空格空行都是有意义的</td></tr></table></div></section><section><h2>段落</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="markdown language-markdown">在我的后园，可以看见墙外有两株树，一株是枣树，还有一株也是枣树。
+
+这上面的夜的天空，奇怪而高，我生平没有见过这样奇怪而高的天空。</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="html language-html">&lt;p&gt;在我的后园，可以看见墙外有两株树，一株是枣树，还有一株也是枣树。&lt;/p&gt;
+
+&lt;p&gt;这上面的夜的天空，奇怪而高，我生平没有见过这样奇怪而高的天空。&lt;/p&gt;</code></pre></div></div></section><section><div class="admonitionblock tip"><table><tr><td class="icon"><div class="title">Tip</div></td><td class="content">换行（<code>\n</code>）不是换行（<code>&lt;br&gt;</code>）。</td></tr></table></div></section><section><div class="listingblock"><div class="content"><pre class="highlight"><code class="markdown language-markdown">这是第一行
+这是第二行</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="html language-html">&lt;p&gt;这是第一行
+这是第二行&lt;/p&gt;</code></pre></div></div>
+<div class="exampleblock"><div class="content"><div class="paragraph"><p>这是第一行
+这是第二行</p></div></div></div></section><section><div class="paragraph"><p>换行方法一：行末加两个空格。</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="markdown language-markdown">这是第一行
+这是第二行</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="html language-html">&lt;p&gt;这是第一行&lt;br&gt;
+这是第二行&lt;/p&gt;</code></pre></div></div></section><section><div class="paragraph"><p>换行方法二：修改渲染器。</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="console language-console">$ redcarpet --render-hard_wrap breakline.md</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="html language-html">&lt;p&gt;这是第一行&lt;br&gt;
+这是第二行&lt;/p&gt;</code></pre></div></div></section><section><h2>引用</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="markdown language-markdown">&gt; 在我的后园，可以看见墙外有两株树，一株是枣树，还有一株也是枣树。
+
+&gt; 这上面的夜的天空，奇怪而高，我生平没有见过这样奇怪而高的天空。</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="html language-html">&lt;blockquote&gt;
+  &lt;p&gt;在我的后园，可以看见墙外有两株树，一株是枣树，还有一株也是枣树。&lt;/p&gt;
+  &lt;p&gt;这上面的夜的天空，奇怪而高，我生平没有见过这样奇怪而高的天空。&lt;/p&gt;
+&lt;/blockquote&gt;</code></pre></div></div></section><section><h2>代码块</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="markdown language-markdown">    def foo
+      puts "hello world"
+    end</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="html language-html">&lt;pre&gt;
+  &lt;code&gt;
+    def foo
+      puts "hello world"
+    end
+  &lt;/code&gt;
+&lt;/pre&gt;</code></pre></div></div></section><section><h2>GitHub Flavored Markdown (GFM)</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="console language-console">```ruby
+def foo
+  puts "hello world"
+end
+```</code></pre></div></div></section><section><h2>有序列表</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="markdown language-markdown">1. 有序列表
+2. 有序列表
+3. 有序列表</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="html language-html">&lt;ol&gt;
+ &lt;li&gt;有序列表&lt;/li&gt;
+ &lt;li&gt;有序列表&lt;/li&gt;
+ &lt;li&gt;有序列表&lt;/li&gt;
+&lt;/ol&gt;</code></pre></div></div></section><section><h2>无序列表</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="markdown language-markdown">* 无序列表
+* 无序列表
+* 无序列表</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="html language-html">&lt;ul&gt;
+  &lt;li&gt;无序列表&lt;/li&gt;
+  &lt;li&gt;无序列表&lt;/li&gt;
+  &lt;li&gt;无序列表&lt;/li&gt;
+&lt;/ul&gt;</code></pre></div></div></section><section><h2>文字样式</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="markdown language-markdown">*斜体*
+
+**加粗**
+
+`代码`</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="html language-html">&lt;em&gt;斜体&lt;/em&gt;
+
+&lt;strong&gt;加粗&lt;/strong&gt;
+
+&lt;code&gt;代码&lt;/code&gt;</code></pre></div></div></section><section><h2>链接/图片</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="markdown language-markdown">[链接](http://example.org/)
+
+![图片](http://example.org/image.png)</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="html language-html">&lt;a href="http://example.org/"&gt;链接&lt;/a&gt;
+
+&lt;img src="http://example.org/image.png" alt="图片"&gt;</code></pre></div></div></section></section>
+<section><section><h2>Markdown 的应用场景</h2></section><section><h2>Jekyll</h2><div class="imageblock" style=""><div class="content"><img src="images/jekyll.png" alt="jekyll"></div></div></section><section><h2>Middleman</h2><div class="imageblock" style=""><div class="content"><img src="images/middleman.png" alt="middleman"></div></div></section><section><h2>GitBook</h2><div class="paragraph"><p><span class="image"><img src="images/gitbook.png" alt="gitbook"></span></p></div></section></section>
+<section><section><h2>Markdown 的局限</h2></section><section><h2>功能少</h2><div class="paragraph"><p>缺少表格、脚注、目录、拆分文件……</p></div></section><section><h2>太多方言</h2><div class="paragraph"><p>GitHub Flavor、Stack Overflow Flavor……</p></div></section><section><h2>不一致</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="markdown language-markdown"># Hello there
+
+This is a paragraph.
+
+- one
+- two
+- three
+- four
+
+1. pirate
+2. ninja
+3. zombie</code></pre></div></div>
+<div class="paragraph"><p><a href="http://johnmacfarlane.net/babelmark2/" class="bare">http://johnmacfarlane.net/babelmark2/</a></p></div></section><section><div class="imageblock" style=""><div class="content"><img src="images/commonmark.png" alt="commonmark"></div></div>
+<div class="paragraph"><p><a href="http://commonmark.org/" class="bare">http://commonmark.org/</a></p></div></section><section><h2>又一个方言</h2><div class="imageblock" style=""><div class="content"><img src="images/another-standards.png" alt="another standards"></div></div></section><section><div class="paragraph"><p>我们需要更好的标记语言。</p></div></section><section><div class="paragraph"><p>简单和强大冲突吗？</p></div></section></section>
+<section><section><h2>AsciiDoc</h2></section><section><div class="paragraph"><p>AsciiDoc 发布于 2002-11-25。</p></div>
+<div class="paragraph"><p>Markdown 发布于 2004-3-19。</p></div></section><section><div class="paragraph"><p>AsciiDoc &#8594; DocBook</p></div></section><section><div class="listingblock"><div class="title">example.adoc</div><div class="content"><pre class="highlight"><code class="asciidoc language-asciidoc">= Hello, AsciiDoc!
+Doc Writer &lt;doc@example.com&gt;
+
+An introduction to http://asciidoc.org[AsciiDoc].
+
+== First Section
+
+* item 1
+* item 2
+
+[source,ruby]
+----
+puts "Hello, World!"
+----</code></pre></div></div></section><section><h2>Asciidoctor</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="console language-console">$ gem install asciidoctor
+$ asciidoctor example.adoc</code></pre></div></div></section><section><div class="imageblock" style=""><div class="content"><img src="images/asciidoc-example.png" alt="asciidoc example"></div></div></section><section><div class="listingblock"><div class="content"><pre class="highlight"><code class="ruby language-ruby">require 'asciidoctor'
+
+content = '_Zen_ in the art of writing http://asciidoctor.org[AsciiDoc].'
+Asciidoctor.convert content
+# =&gt; "&lt;div class=\"paragraph\"&gt;\n&lt;p&gt;&lt;em&gt;Zen&lt;/em&gt; in the art of writing &lt;a href=\"http://asciidoctor.org\"&gt;AsciiDoc&lt;/a&gt;.&lt;/p&gt;\n&lt;/div&gt;"</code></pre></div></div></section><section><h2>Atom</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="console language-console">$ apm install language-asciidoc asciidoc-preview</code></pre></div></div>
+<div class="imageblock" style=""><div class="content"><img src="images/atom-asciidoctor.png" alt="atom asciidoctor"></div></div></section><section><div class="ulist"><ul><li><p>jekyll-asciidoc</p></li><li><p>middleman-asciidoc</p></li><li><p>GitBook v2+</p></li></ul></div></section></section>
+<section><section><h2>Asciidoc 语法</h2></section><section><h2>文档标题和属性</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="asciidoc language-asciidoc">= 文档标题
+作者 &lt;author@example.org&gt;
+:appversion: 1.0.0</code></pre></div></div></section><section><h2>章节标题</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="asciidoc language-asciidoc">= 文档标题
+
+== 一级标题
+
+=== 二级标题
+
+==== 三级标题</code></pre></div></div></section><section><div class="listingblock"><div class="content"><pre class="highlight"><code class="asciidoc language-asciidoc">= 文档标题
+:toc:
+
+== 第一章
+
+=== 第一节
+
+=== 第二节
+
+== 第二章
+
+== 第三章</code></pre></div></div></section><section><div class="imageblock" style=""><div class="content"><img src="images/asciidoc-syntax/toc.png" alt="toc"></div></div></section><section><h2>段落</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="asciidoc language-asciidoc">在我的后园，可以看见墙外有两株树，一株是枣树，还有一株也是枣树。
+
+这上面的夜的天空，奇怪而高，我生平没有见过这样奇怪而高的天空。</code></pre></div></div></section><section><div class="paragraph"><p>换行方法一：行末加 ` +`</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="asciidoctor language-asciidoctor">第一行 +
+第二行</code></pre></div></div></section><section><div class="paragraph"><p>换行方法二：段落属性</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="asciidoc language-asciidoc">[%hardbreaks]
+第一行
+第二行</code></pre></div></div></section><section><div class="paragraph"><p>换行方法三：全局属性</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="asciidoc language-asciidoc">= 文档标题
+:hardbreaks:
+
+第一行
+第二行</code></pre></div></div></section><section><h2>引用</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="asciidoc language-asciidoc">____
+在我的后园，可以看见墙外有两株树，一株是枣树，还有一株也是枣树。
+____
+
+[quote, 鲁迅]
+____
+在我的后园，可以看见墙外有两株树，一株是枣树，还有一株也是枣树。
+____
+
+[quote, 鲁迅, 《秋夜》]
+____
+在我的后园，可以看见墙外有两株树，一株是枣树，还有一株也是枣树。
+____</code></pre></div></div></section><section><div class="imageblock" style=""><div class="content"><img src="images/asciidoc-syntax/quote.png" alt="quote"></div></div></section><section><h2>图片</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="asciidoc language-asciidoc">image::path/to/image.png[]
+
+image::https://ruby-china.org/logo.png[]</code></pre></div></div></section><section><div class="listingblock"><div class="content"><pre class="highlight"><code class="asciidoc language-asciidoc">.Ruby China Logo
+image::images/ruby-china.png[width=300]</code></pre></div></div>
+<div class="imageblock" style=""><div class="content"><img src="images/asciidoc-syntax/image.png" alt="image"></div></div></section><section><h2>音频/视频</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="asciidoc language-asciidoc">audio::path/to/audio.ogg[]
+
+video::path/to/video.ogg[]</code></pre></div></div></section><section><h2>表格</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="asciidoc language-asciidoc">.Table Title
+|===
+|Name of Column 1 |Name of Column 2 |Name of Column 3
+
+|Cell in column 1, row 1
+|Cell in column 2, row 1
+|Cell in column 3, row 1
+
+|Cell in column 1, row 2
+|Cell in column 2, row 2
+|Cell in column 3, row 2
+|===</code></pre></div></div></section><section><div class="imageblock" style=""><div class="content"><img src="images/asciidoc-syntax/table.png" alt="table"></div></div></section><section><div class="listingblock"><div class="content"><pre class="highlight"><code class="asciidoc language-asciidoc">[format="csv", options="header"]
+|===
+Artist,Track,Genre
+Baauer,Harlem Shake,Hip Hop
+The Lumineers,Ho Hey,Folk Rock
+|===</code></pre></div></div></section><section><div class="listingblock"><div class="content"><pre class="highlight"><code class="asciidoc language-asciidoc">[format="csv", options="header"]
+|===
+include::customers.csv[]
+|===</code></pre></div></div></section><section><h2>代码块</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="asciidoc language-asciidoc">[source,ruby]
+----
+require 'sinatra'
+
+get '/hi' do
+  "Hello World!"
+end
+----</code></pre></div></div></section><section><h2>标注</h2><div class="listingblock"><div class="content"><pre class="highlight"><code>:source-highlighter: coderay
+:icons: font
+
+.hello_world.rb
+[source,ruby]
+----
+require 'sinatra' # &lt;1&gt;
+
+get '/hi' do # &lt;2&gt;
+  "Hello World!" # &lt;3&gt;
+end
+----
+&lt;1&gt; Library import
+&lt;2&gt; URL mapping
+&lt;3&gt; Content for response</code></pre></div></div></section><section><div class="imageblock" style=""><div class="content"><img src="images/asciidoc-syntax/code.png" alt="code"></div></div></section><section><h2>脚注</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="asciidoc language-asciidoc">* 原汁海螺 28 元
+* 原汁扇贝 10 元
+* 海捕大虾 38 元 footnote:[以上海鲜按个计价]</code></pre></div></div>
+<div class="imageblock" style=""><div class="content"><img src="images/asciidoc-syntax/footnotes.png" alt="footnotes"></div></div></section><section><h2>警告</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="asciidoc language-asciidoc">:fonts: icon
+
+TIP: Pro tip...
+
+IMPORTANT: Don't forget...
+
+WARNING: Watch out for...
+
+CAUTION: Ensure that...</code></pre></div></div></section><section><div class="imageblock" style=""><div class="content"><img src="images/asciidoc-syntax/admonitions.png" alt="admonitions"></div></div></section><section><h2>Include</h2><div class="listingblock"><div class="title">index.adoc</div><div class="content"><pre class="highlight"><code class="asciidoc language-asciidoc">= Document Title
+
+include::sections/chapter_1.adoc[]
+
+include::sections/chapter_2.adoc[]
+
+include::sections/chapter_3.adoc[]</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="console language-console">.
+|-- index.adoc
+`-- sections
+    |-- chapter_1.adoc
+    |-- chapter_2.adoc
+    `-- chapter_3.adoc</code></pre></div></div></section><section><h2>Block</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="asciidoc language-asciidoc">.Title
+[Blockname, Attributes]
+--
+Content
+--</code></pre></div></div></section><section><h2>自定义 Block</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="asciidoc language-asciidoc">[shout]
+--
+The time is now. Get a move on.
+--</code></pre></div></div></section><section><div class="listingblock"><div class="content"><pre class="highlight"><code class="ruby language-ruby">require 'asciidoctor'
+require 'asciidoctor/extensions'
+
+class ShoutBlock &lt; Asciidoctor::Extensions::BlockProcessor
+  PeriodRx = /\.(?= |$)/
+
+  use_dsl
+
+  named :shout
+  on_context :paragraph
+  name_positional_attributes 'vol'
+  parse_content_as :simple
+
+  def process parent, reader, attrs
+    volume = ((attrs.delete 'vol') || 1).to_i
+    create_paragraph parent, (reader.lines.map {|l| l.upcase.gsub PeriodRx, '!' * volume }), attrs
+  end
+end</code></pre></div></div></section><section><div class="listingblock"><div class="content"><pre class="highlight"><code class="ruby language-ruby">Asciidoctor::Extensions.register do
+  block ShoutBlock
+end
+
+Asciidoctor.convert_file 'sample-with-shout-block.adoc'</code></pre></div></div></section><section><h2>更多……</h2><div class="paragraph"><p><a href="http://asciidoctor.org/docs/asciidoc-writers-guide/" class="bare">http://asciidoctor.org/docs/asciidoc-writers-guide/</a></p></div>
+<div class="paragraph"><p><a href="http://asciidoctor.org/docs/user-manual/" class="bare">http://asciidoctor.org/docs/user-manual/</a></p></div></section></section>
+<section><section><h2>Asciidoctor</h2></section><section><h2>跨平台</h2><div class="ulist"><ul><li><p>Asciidoctor</p></li><li><p>AsciidoctorJ (via JRuby)</p></li><li><p>Asciidoctor.js (via Opal)</p></li></ul></div></section><section><h2>1 &#8594; N</h2><div class="ulist"><ul><li><p>HTML</p></li><li><p>PDF</p></li><li><p>EPUB</p></li><li><p>Reveal.js</p></li><li><p>LaTex</p></li><li><p>Diagram</p></li></ul></div></section></section>
+<section><section><h2>Asciidoctor (HTML)</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="console language-console">$ asciidoctor index.adoc</code></pre></div></div></section><section><h2>Themes</h2><div class="imageblock" style=""><div class="content"><img src="images/asciidoctor-themes.png" alt="asciidoctor themes"></div></div>
+<div class="paragraph"><p><a href="http://themes.asciidoctor.org/" class="bare">http://themes.asciidoctor.org/</a></p></div></section></section>
+<section><section><h2>asciidoctor-pdf</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="console language-console">$ gem install --pre asciidoctor-pdf
+$ asciidoctor-pdf index.adoc</code></pre></div></div></section><section><div class="imageblock" style=""><div class="content"><img src="images/asciidoctor-pdf.png" alt="asciidoctor pdf"></div></div></section><section><h2>CJK 补丁和字体</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="console language-console">$ gem install asciidoctor-pdf-cjk-kai_gen_gothic
+$ asciidoctor-pdf-cjk-kai_gen_gothic-install
+$ asciidoctor-pdf -r asciidoctor-pdf-cjk-kai_gen_gothic \
+                  -a pdf-style=THEME \
+                  index.adoc</code></pre></div></div></section><section><h2>progit2 中文版</h2><div class="imageblock" style=""><div class="content"><img src="images/progit2-zh.png" alt="progit2 zh"></div></div></section></section>
+<section><section><h2>Asciidoctor-epub3</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="console language-console">$ gem install --pre asciidoctor-epub3
+$ asciidoctor-epub3 index.adoc</code></pre></div></div></section><section><div class="imageblock" style=""><div class="content"><img src="images/asciidoctor-epub3.png" alt="asciidoctor epub3"></div></div></section><section><h2>MOBI</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="console language-console">$ gem install kindlegen
+$ asciidoctor-epub3 -a ebook-format=kf8 index.adoc</code></pre></div></div></section><section><div class="listingblock"><div class="title">Asciidoctor Book Template</div><div class="content"><pre class="highlight"><code class="console language-console">$ git clone https://github.com/chloerei/asciidoctor-book-template.git bookname
+$ cd bookname
+$ bundle install
+$ asciidoctor-pdf-cjk-kai_gen_gothic-install
+$ rake build</code></pre></div></div></section></section>
+<section><section><h2>Asciidoctor-reveal.js</h2></section><section><div class="listingblock"><div class="content"><pre class="highlight"><code class="console language-console">$ gem install asciidoctor tilt thread_safe
+$ gem install slim --version 2.1.0
+$ git clone git://github.com/asciidoctor/asciidoctor-reveal.js.git
+
+$ asciidoctor -T templates/slim index.adoc</code></pre></div></div></section><section><div class="listingblock"><div class="content"><pre class="highlight"><code class="asciidoctor language-asciidoctor">= Title Slide
+
+== Slide One
+
+* Foo
+* Bar
+* World
+
+== Slide Two
+
+Hello World - Good Bye Cruel World</code></pre></div></div></section></section>
+<section><section><h2>Asciidoctor-latex</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="console language-console">$ gem install --pre asciidoctor-latex
+
+# 解析文档中的 latex
+$ asciidoctor-latex -b html foo.adoc
+
+# 生成 latex 文档
+$ asciidoctor-latex foo.adoc</code></pre></div></div></section><section><div class="listingblock"><div class="content"><pre class="highlight"><code class="asciidoctor language-asciidoctor">\[
+   e^{2\pi \sqrt{-1}} = 1
+\]</code></pre></div></div>
+<div class="imageblock" style=""><div class="content"><img src="images/latex.png" alt="latex"></div></div></section></section>
+<section><section><h2>Asciidoctor-diagram</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="console language-console">$ gem install --pre asciidoctor-diagram</code></pre></div></div></section><section><div class="listingblock"><div class="content"><pre class="highlight"><code class="asciidoctor language-asciidoctor">[ditaa]
+....
+                   +-------------+
+                   | Asciidoctor |-------+
+                   |   diagram   |       |
+                   +-------------+       | PNG out
+                       ^                 |
+                       | ditaa in        |
+                       |                 v
+ +--------+   +--------+----+    /---------------\
+ |        | --+ Asciidoctor +--&gt; |               |
+ |  Text  |   +-------------+    |   Beautiful   |
+ |Document|   |   !magic!   |    |    Output     |
+ |     {d}|   |             |    |               |
+ +---+----+   +-------------+    \---------------/
+     :                                   ^
+     |          Lots of work             |
+     +-----------------------------------+
+....</code></pre></div></div></section><section><div class="listingblock"><div class="content"><pre class="highlight"><code class="console language-console">$ asciidoctor -r asciidoctor-diagram index.adoc</code></pre></div></div>
+<div class="imageblock" style=""><div class="content"><img src="images/asciidoctor-diagram.png" alt="asciidoctor diagram"></div></div></section></section>
+<section><section><h2>总结</h2></section><section><div class="ulist"><ul><li><p>Markdown</p></li><li><p>AsciiDoc</p></li></ul></div></section><section><div class="ulist"><ul><li><p>Jekyll</p></li><li><p>Middleman</p></li></ul></div></section><section><div class="ulist"><ul><li><p>GitBook</p></li><li><p>Asciidoctor</p></li></ul></div></section><section><div class="paragraph"><p>快乐写作，快乐编程。</p></div></section><section><div class="paragraph"><p>谢谢。</p></div>
+<div class="paragraph"><p>by 黄增光（@chloerei） <a href="mailto:chloerei@gmail.com">chloerei@gmail.com</a></p></div></section></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.js"></script><script type="text/javascript">// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+Reveal.initialize({
+  // Display controls in the bottom right corner
+  controls: true,
+  // Display a presentation progress bar
+  progress: true,
+  // Display the page number of the current slide
+  slideNumber: false,
+  // Push each slide change to the browser history
+  history: true,
+  // Enable keyboard shortcuts for navigation
+  keyboard: true,
+  // Enable the slide overview mode
+  overview: true,
+  // Vertical centering of slides
+  center: true,
+  // Enables touch navigation on devices with touch input
+  touch: true,
+  // Loop the presentation
+  loop: false,
+  // Change the presentation direction to be RTL
+  rtl: false,
+  // Turns fragments on and off globally
+  fragments: true,
+  // Flags if the presentation is running in an embedded mode,
+  // i.e. contained within a limited portion of the screen
+  embedded: false,
+  // Number of milliseconds between automatically proceeding to the
+  // next slide, disabled when set to 0, this value can be overwritten
+  // by using a data-autoslide attribute on your slides
+  autoSlide: 0,
+  // Stop auto-sliding after user input
+  autoSlideStoppable: true,
+  // Enable slide navigation via mouse wheel
+  mouseWheel: false,
+  // Hides the address bar on mobile devices
+  hideAddressBar: true,
+  // Opens links in an iframe preview overlay
+  previewLinks: false,
+  // Theme (e.g., beige, black, league, night, serif, simple, sky, solarized, white)
+  // NOTE setting the theme in the config no longer works in reveal.js 3.x
+  //theme: Reveal.getQueryHash().theme || 'black',
+  // Transition style (e.g., none, fade, slide, convex, concave, zoom)
+  transition: Reveal.getQueryHash().transition || 'slide',
+  // Transition speed (e.g., default, fast, slow)
+  transitionSpeed: 'default',
+  // Transition style for full page slide backgrounds (e.g., none, fade, slide, convex, concave, zoom)
+  backgroundTransition: 'fade',
+  // Number of slides away from the current that are visible
+  viewDistance: 3,
+  // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
+  parallaxBackgroundImage: '',
+  // Parallax background size in CSS syntax (e.g., "2100px 900px")
+  parallaxBackgroundSize: '',
+
+  // The "normal" size of the presentation, aspect ratio will be preserved
+  // when the presentation is scaled to fit different resolutions. Can be
+  // specified using percentage units.
+  width: 960,
+  height: 700,
+
+  // Factor of the display size that should remain empty around the content
+  margin: 0.1,
+
+  // Bounds for smallest/largest possible scale to apply to content
+  minScale: 0.2,
+  maxScale: 1.5,
+
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+      { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+});</script></body></html>

@@ -1,0 +1,41 @@
+== Asciidoctor-diagram
+
+[source,console]
+----
+$ gem install --pre asciidoctor-diagram
+----
+
+=== !
+
+[source,asciidoctor]
+----
+[ditaa]
+....
+                   +-------------+
+                   | Asciidoctor |-------+
+                   |   diagram   |       |
+                   +-------------+       | PNG out
+                       ^                 |
+                       | ditaa in        |
+                       |                 v
+ +--------+   +--------+----+    /---------------\
+ |        | --+ Asciidoctor +--> |               |
+ |  Text  |   +-------------+    |   Beautiful   |
+ |Document|   |   !magic!   |    |    Output     |
+ |     {d}|   |             |    |               |
+ +---+----+   +-------------+    \---------------/
+     :                                   ^
+     |          Lots of work             |
+     +-----------------------------------+
+....
+----
+
+=== !
+
+[source,console]
+----
+$ asciidoctor -r asciidoctor-diagram index.adoc
+----
+
+image::asciidoctor-diagram.png[]
+

@@ -1,0 +1,32 @@
+== Asciidoctor-epub3
+
+[source,console]
+----
+$ gem install --pre asciidoctor-epub3
+$ asciidoctor-epub3 index.adoc
+----
+
+=== !
+
+image::asciidoctor-epub3.png[]
+
+=== MOBI
+
+[source,console]
+----
+$ gem install kindlegen
+$ asciidoctor-epub3 -a ebook-format=kf8 index.adoc
+----
+
+=== !
+
+.Asciidoctor Book Template
+[source,console]
+----
+$ git clone https://github.com/chloerei/asciidoctor-book-template.git bookname
+$ cd bookname
+$ bundle install
+$ asciidoctor-pdf-cjk-kai_gen_gothic-install
+$ rake build
+----
+

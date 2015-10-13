@@ -1,0 +1,16 @@
+== 关于我
+
+Web 开发者
+
+=== !
+
+image::ruby-china.png[width=300]
+
+https://ruby-china.org/rei
+
+=== !
+
+image::selfstore-logo.png[width=300]
+
+https://selfstore.io
+

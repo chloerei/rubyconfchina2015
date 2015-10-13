@@ -1,0 +1,71 @@
+== AsciiDoc
+
+=== !
+
+AsciiDoc 发布于 2002-11-25。
+
+Markdown 发布于 2004-3-19。
+
+=== !
+
+AsciiDoc -> DocBook
+
+=== !
+
+.example.adoc
+[source,asciidoc]
+-----
+= Hello, AsciiDoc!
+Doc Writer <doc@example.com>
+
+An introduction to http://asciidoc.org[AsciiDoc].
+
+== First Section
+
+* item 1
+* item 2
+
+[source,ruby]
+----
+puts "Hello, World!"
+----
+-----
+
+=== Asciidoctor
+
+[source,console]
+----
+$ gem install asciidoctor
+$ asciidoctor example.adoc
+----
+
+=== !
+
+image::asciidoc-example.png[]
+
+=== !
+
+[source,ruby]
+----
+require 'asciidoctor'
+
+content = '_Zen_ in the art of writing http://asciidoctor.org[AsciiDoc].'
+Asciidoctor.convert content
+# => "<div class=\"paragraph\">\n<p><em>Zen</em> in the art of writing <a href=\"http://asciidoctor.org\">AsciiDoc</a>.</p>\n</div>"
+----
+
+=== Atom
+
+[source,console]
+----
+$ apm install language-asciidoc asciidoc-preview
+----
+
+image::atom-asciidoctor.png[]
+
+=== !
+
+- jekyll-asciidoc
+- middleman-asciidoc
+- GitBook v2+
+

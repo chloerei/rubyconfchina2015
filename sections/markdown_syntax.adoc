@@ -1,0 +1,240 @@
+== Markdown 语法
+
+=== 标题
+
+[source,markdown]
+----
+# 一级标题
+
+## 二级标题
+
+### 三级标题
+----
+
+[source,html]
+----
+<h1>一级标题</h1>
+
+<h2>二级标题</h2>
+
+<h3>三级标题</h3>
+----
+
+=== 精通 H5
+
+[source,markdown]
+----
+##### 应用
+
+##### 游戏
+
+##### 页面
+----
+
+[source,html]
+----
+<h5>应用</h5>
+
+<h5>游戏</h5>
+
+<h5>页面</h5>
+----
+
+=== !
+
+TIP: 标题不等于大号加粗
+
+=== !
+
+TIP: 空格空行都是有意义的
+
+=== 段落
+
+[source,markdown]
+----
+在我的后园，可以看见墙外有两株树，一株是枣树，还有一株也是枣树。
+
+这上面的夜的天空，奇怪而高，我生平没有见过这样奇怪而高的天空。
+----
+
+[source,html]
+----
+<p>在我的后园，可以看见墙外有两株树，一株是枣树，还有一株也是枣树。</p>
+
+<p>这上面的夜的天空，奇怪而高，我生平没有见过这样奇怪而高的天空。</p>
+----
+
+=== !
+
+TIP: 换行（`\n`）不是换行（`<br>`）。
+
+=== !
+
+[source,markdown]
+----
+这是第一行
+这是第二行
+----
+
+[source,html]
+----
+<p>这是第一行
+这是第二行</p>
+----
+
+====
+这是第一行
+这是第二行
+====
+
+=== !
+
+换行方法一：行末加两个空格。
+
+[source,markdown]
+----
+这是第一行
+这是第二行
+----
+
+[source,html]
+----
+<p>这是第一行<br>
+这是第二行</p>
+----
+
+=== !
+
+换行方法二：修改渲染器。
+
+[source,console]
+----
+$ redcarpet --render-hard_wrap breakline.md
+----
+
+[source,html]
+----
+<p>这是第一行<br>
+这是第二行</p>
+----
+
+=== 引用
+
+[source,markdown]
+----
+> 在我的后园，可以看见墙外有两株树，一株是枣树，还有一株也是枣树。
+
+> 这上面的夜的天空，奇怪而高，我生平没有见过这样奇怪而高的天空。
+----
+
+[source,html]
+----
+<blockquote>
+  <p>在我的后园，可以看见墙外有两株树，一株是枣树，还有一株也是枣树。</p>
+  <p>这上面的夜的天空，奇怪而高，我生平没有见过这样奇怪而高的天空。</p>
+</blockquote>
+----
+
+=== 代码块
+
+[source,markdown]
+----
+    def foo
+      puts "hello world"
+    end
+----
+
+[source,html]
+----
+<pre>
+  <code>
+    def foo
+      puts "hello world"
+    end
+  </code>
+</pre>
+----
+
+=== GitHub Flavored Markdown (GFM)
+
+[source,console]
+----
+```ruby
+def foo
+  puts "hello world"
+end
+```
+----
+
+=== 有序列表
+
+[source,markdown]
+----
+1. 有序列表
+2. 有序列表
+3. 有序列表
+----
+
+[source,html]
+----
+<ol>
+ <li>有序列表</li>
+ <li>有序列表</li>
+ <li>有序列表</li>
+</ol>
+----
+
+=== 无序列表
+
+[source,markdown]
+----
+* 无序列表
+* 无序列表
+* 无序列表
+----
+
+[source,html]
+----
+<ul>
+  <li>无序列表</li>
+  <li>无序列表</li>
+  <li>无序列表</li>
+</ul>
+----
+
+=== 文字样式
+
+[source,markdown]
+----
+*斜体*
+
+**加粗**
+
+`代码`
+----
+
+[source,html]
+----
+<em>斜体</em>
+
+<strong>加粗</strong>
+
+<code>代码</code>
+----
+
+=== 链接/图片
+
+[source,markdown]
+----
+[链接](http://example.org/)
+
+![图片](http://example.org/image.png)
+----
+
+[source,html]
+----
+<a href="http://example.org/">链接</a>
+
+<img src="http://example.org/image.png" alt="图片">
+----
+

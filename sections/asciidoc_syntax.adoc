@@ -1,0 +1,339 @@
+== Asciidoc 语法
+
+=== 文档标题和属性
+
+[source,asciidoc]
+----
+= 文档标题
+作者 <author@example.org>
+:appversion: 1.0.0
+----
+
+=== 章节标题
+
+[source,asciidoc]
+----
+= 文档标题
+
+== 一级标题
+
+=== 二级标题
+
+==== 三级标题
+----
+
+=== !
+
+[source,asciidoc]
+----
+= 文档标题
+:toc:
+
+== 第一章
+
+=== 第一节
+
+=== 第二节
+
+== 第二章
+
+== 第三章
+----
+
+=== !
+
+image::asciidoc-syntax/toc.png[]
+
+=== 段落
+
+[source,asciidoc]
+----
+在我的后园，可以看见墙外有两株树，一株是枣树，还有一株也是枣树。
+
+这上面的夜的天空，奇怪而高，我生平没有见过这样奇怪而高的天空。
+----
+
+=== !
+
+换行方法一：行末加 ` +`
+
+[source,asciidoctor]
+----
+第一行 +
+第二行
+----
+
+=== !
+
+换行方法二：段落属性
+
+[source,asciidoc]
+----
+[%hardbreaks]
+第一行
+第二行
+----
+
+=== !
+
+换行方法三：全局属性
+
+[source,asciidoc]
+----
+= 文档标题
+:hardbreaks:
+
+第一行
+第二行
+----
+
+=== 引用
+
+[source,asciidoc]
+----
+____
+在我的后园，可以看见墙外有两株树，一株是枣树，还有一株也是枣树。
+____
+
+[quote, 鲁迅]
+____
+在我的后园，可以看见墙外有两株树，一株是枣树，还有一株也是枣树。
+____
+
+[quote, 鲁迅, 《秋夜》]
+____
+在我的后园，可以看见墙外有两株树，一株是枣树，还有一株也是枣树。
+____
+----
+
+=== !
+
+image::asciidoc-syntax/quote.png[]
+
+=== 图片
+
+[source,asciidoc]
+----
+image::path/to/image.png[]
+
+image::https://ruby-china.org/logo.png[]
+----
+
+=== !
+
+[source,asciidoc]
+----
+.Ruby China Logo
+image::images/ruby-china.png[width=300]
+----
+
+image::asciidoc-syntax/image.png[]
+
+=== 音频/视频
+
+[source,asciidoc]
+----
+audio::path/to/audio.ogg[]
+
+video::path/to/video.ogg[]
+----
+
+=== 表格
+
+[source,asciidoc]
+----
+.Table Title
+|===
+|Name of Column 1 |Name of Column 2 |Name of Column 3 
+
+|Cell in column 1, row 1
+|Cell in column 2, row 1
+|Cell in column 3, row 1
+
+|Cell in column 1, row 2
+|Cell in column 2, row 2
+|Cell in column 3, row 2
+|===
+----
+
+=== !
+
+image::asciidoc-syntax/table.png[]
+
+=== !
+
+[source,asciidoc]
+----
+[format="csv", options="header"]
+|===
+Artist,Track,Genre
+Baauer,Harlem Shake,Hip Hop
+The Lumineers,Ho Hey,Folk Rock
+|===
+----
+
+=== !
+
+[source,asciidoc]
+----
+[format="csv", options="header"]
+|===
+\include::customers.csv[]
+|===
+----
+
+=== 代码块
+
+[source,asciidoc]
+-----
+[source,ruby]
+----
+require 'sinatra'
+
+get '/hi' do
+  "Hello World!"
+end
+----
+-----
+
+=== 标注
+
+[source, subs="specialcharacters"]
+-----
+:source-highlighter: coderay
+:icons: font
+
+.hello_world.rb
+[source,ruby]
+----
+require 'sinatra' # <1>
+
+get '/hi' do # <2>
+  "Hello World!" # <3>
+end
+----
+<1> Library import
+<2> URL mapping
+<3> Content for response
+-----
+
+=== !
+
+image::asciidoc-syntax/code.png[]
+
+=== 脚注
+
+[source,asciidoc]
+----
+* 原汁海螺 28 元
+* 原汁扇贝 10 元
+* 海捕大虾 38 元 footnote:[以上海鲜按个计价]
+----
+
+image::asciidoc-syntax/footnotes.png[]
+
+=== 警告
+
+[source,asciidoc]
+----
+:fonts: icon
+
+TIP: Pro tip...
+
+IMPORTANT: Don't forget...
+
+WARNING: Watch out for...
+
+CAUTION: Ensure that...
+----
+
+=== !
+
+image::asciidoc-syntax/admonitions.png[]
+
+=== Include
+
+.index.adoc
+[source,asciidoc]
+----
+= Document Title
+
+\include::sections/chapter_1.adoc[]
+
+\include::sections/chapter_2.adoc[]
+
+\include::sections/chapter_3.adoc[]
+----
+
+[source,console]
+----
+.
+|-- index.adoc
+`-- sections
+    |-- chapter_1.adoc
+    |-- chapter_2.adoc
+    `-- chapter_3.adoc
+----
+
+=== Block
+
+[source,asciidoc]
+----
+.Title
+[Blockname, Attributes]
+--
+Content
+--
+----
+
+=== 自定义 Block
+
+[source,asciidoc]
+----
+[shout]
+--
+The time is now. Get a move on.
+--
+----
+
+=== !
+
+[source,ruby]
+----
+require 'asciidoctor'
+require 'asciidoctor/extensions'
+
+class ShoutBlock < Asciidoctor::Extensions::BlockProcessor
+  PeriodRx = /\.(?= |$)/
+
+  use_dsl
+
+  named :shout
+  on_context :paragraph
+  name_positional_attributes 'vol'
+  parse_content_as :simple
+
+  def process parent, reader, attrs
+    volume = ((attrs.delete 'vol') || 1).to_i
+    create_paragraph parent, (reader.lines.map {|l| l.upcase.gsub PeriodRx, '!' * volume }), attrs
+  end
+end
+----
+
+=== !
+
+[source,ruby]
+----
+Asciidoctor::Extensions.register do
+  block ShoutBlock
+end
+
+Asciidoctor.convert_file 'sample-with-shout-block.adoc'
+----
+
+=== 更多……
+
+http://asciidoctor.org/docs/asciidoc-writers-guide/
+
+http://asciidoctor.org/docs/user-manual/
+

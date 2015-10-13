@@ -1,0 +1,31 @@
+== Asciidoctor-reveal.js
+
+=== !
+
+[source,console]
+----
+$ gem install asciidoctor tilt thread_safe
+$ gem install slim --version 2.1.0
+$ git clone git://github.com/asciidoctor/asciidoctor-reveal.js.git
+
+$ asciidoctor -T templates/slim index.adoc
+----
+
+=== !
+
+[source,asciidoctor]
+----
+= Title Slide
+
+== Slide One
+
+* Foo
+* Bar
+* World
+
+== Slide Two
+
+Hello World - Good Bye Cruel World
+
+----
+

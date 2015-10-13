@@ -1,0 +1,27 @@
+== asciidoctor-pdf
+
+[source,console]
+----
+$ gem install --pre asciidoctor-pdf
+$ asciidoctor-pdf index.adoc
+----
+
+=== !
+
+image::asciidoctor-pdf.png[]
+
+=== CJK 补丁和字体
+
+[source,console]
+----
+$ gem install asciidoctor-pdf-cjk-kai_gen_gothic
+$ asciidoctor-pdf-cjk-kai_gen_gothic-install
+$ asciidoctor-pdf -r asciidoctor-pdf-cjk-kai_gen_gothic \
+                  -a pdf-style=THEME \
+                  index.adoc
+----
+
+=== progit2 中文版
+
+image::progit2-zh.png[]
+

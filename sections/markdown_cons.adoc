@@ -1,0 +1,48 @@
+== Markdown 的局限
+
+=== 功能少
+
+缺少表格、脚注、目录、拆分文件……
+
+=== 太多方言
+
+GitHub Flavor、Stack Overflow Flavor……
+
+=== 不一致
+
+[source,markdown]
+----
+# Hello there
+
+This is a paragraph.
+
+- one
+- two
+- three
+- four
+
+1. pirate
+2. ninja
+3. zombie
+----
+
+http://johnmacfarlane.net/babelmark2/
+
+=== !
+
+image::commonmark.png[]
+
+http://commonmark.org/
+
+=== 又一个方言
+
+image::another-standards.png[]
+
+=== !
+
+我们需要更好的标记语言。
+
+=== ! 
+
+简单和强大冲突吗？
+

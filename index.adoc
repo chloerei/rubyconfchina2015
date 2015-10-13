@@ -1,0 +1,40 @@
+= 写作即编程
+黄增光（@chloerei） <chloerei@gmail.com>
+:imagesdir: images
+:revealjs_history: true
+:sectids!:
+:source-highlighter: highlightjs
+
+include::sections/about_me.adoc[]
+
+include::sections/why_writing.adoc[]
+
+// include::sections/choice.adoc[]
+
+include::sections/markdown_intro.adoc[]
+
+include::sections/markdown_syntax.adoc[]
+
+include::sections/markdown_advance.adoc[]
+
+include::sections/markdown_cons.adoc[]
+
+include::sections/asciidoc_intro.adoc[]
+
+include::sections/asciidoc_syntax.adoc[]
+
+include::sections/asciidoctor.adoc[]
+
+include::sections/asciidoctor_html.adoc[]
+
+include::sections/asciidoctor_pdf.adoc[]
+
+include::sections/asciidoctor_epub.adoc[]
+
+include::sections/asciidoctor_reveal.adoc[]
+
+include::sections/asciidoctor_latex.adoc[]
+
+include::sections/asciidoctor_diagram.adoc[]
+
+include::sections/end.adoc[]

@@ -1,0 +1,86 @@
+== Markdown
+
+=== 支持 Markdown 的网站
+
+- Stack Overflow
+- GitHub
+- Ruby China
+- ...
+
+=== !
+
+.example.md
+[source,markdown]
+----
+# A First Level Header
+
+## A Second Level Header
+
+Now is the time for all good men to come to
+the aid of their country. This is just a
+regular paragraph.
+
+The quick brown fox jumped over the lazy
+dog's back.
+
+### Header 3
+
+> This is a blockquote.
+> 
+> This is the second paragraph in the blockquote.
+>
+> ## This is an H2 in a blockquote
+----
+
+=== !
+
+[source,console]
+----
+$ gem install redcarpet
+$ redcarpet example.md > example.html
+----
+
+=== !
+
+.example.html
+[source,html]
+----
+<h1>First Level Header</h1>
+
+<h2>A Second Level Header</h2>
+
+<p>Now is the time for all good men to come to
+the aid of their country. This is just a
+regular paragraph.</p>
+
+<p>The quick brown fox jumped over the lazy
+dog&#39;s back.</p>
+
+<h3>Header 3</h3>
+
+<blockquote>
+<p>This is a blockquote.</p>
+
+<p>This is the second paragraph in the blockquote.</p>
+
+<h2>This is an H2 in a blockquote</h2>
+</blockquote>
+----
+
+=== !
+
+[source,ruby]
+----
+require 'redcarpet'
+
+# Initializes a Markdown parser
+markdown = Redcarpet::Markdown.new(renderer, extensions = {})
+
+markdown.render("This is *bongos*, indeed.")
+# => "<p>This is <em>bongos</em>, indeed.</p>"
+----
+
+=== Atom
+
+image::atom-markdown.png[]
+

@@ -1,0 +1,24 @@
+== Asciidoctor-latex
+
+[source,console]
+----
+$ gem install --pre asciidoctor-latex
+
+# 解析文档中的 latex
+$ asciidoctor-latex -b html foo.adoc
+
+# 生成 latex 文档
+$ asciidoctor-latex foo.adoc
+----
+
+=== !
+
+[source,asciidoctor]
+----
+\[
+   e^{2\pi \sqrt{-1}} = 1
+\]
+----
+
+image::latex.png[]
+
